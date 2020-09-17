@@ -1,0 +1,13 @@
+[Unit]
+Description=this service aim to start k8s-dev-plugin
+After=kubelet.service docker.service
+
+[Service]
+ExecStart=/opt/openvmi/k8s-plugins/k8s-dev-plugin
+User=root 
+Restart=always
+StartLimitInterval=0
+RestartSec=10
+
+[Install]                                                                                                                                                            
+WantedBy=multi-user.target

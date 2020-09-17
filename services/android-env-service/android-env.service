@@ -1,0 +1,15 @@
+[Unit]
+Description=this service aim to start android-env-service.sh
+Before=docker.service kubelet.service
+
+[Service]
+User=root
+ExecStart=/opt/openvmi/android-env/android-env-service.sh
+KillMode=process
+TasksMax=100000
+Restart=always
+RestartSec=10
+StartLimitInterval=0
+
+[Install]                                                                                                                                                  
+WantedBy=multi-user.target
