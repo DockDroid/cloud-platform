@@ -179,6 +179,8 @@ spec:
           name: volume-event2
         - mountPath: /data:rw
           name: volume-data
+        - mountPath: /dev/tun:rw
+          name: volume-tun
       volumes:
       - name: volume-openvmi
         hostPath:
@@ -201,6 +203,9 @@ spec:
       - name: volume-data
         hostPath:
           path: /opt/openvmi/android-data/$ANDROID_NAME/data
+      - name: volume-tun
+        hostPath:
+           path: /dev/net/tun
 EOF
 )
 }
