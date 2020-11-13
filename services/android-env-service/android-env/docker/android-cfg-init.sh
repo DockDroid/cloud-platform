@@ -40,6 +40,7 @@ echo $ANDROID_NAME >> $INIT_QUEUE_FILE
 while true
 do 	
 	if [ ! -s $INIT_STATUS_FILE ]; then
+		sleep 0.1
 		continue
 	else
 		status=`cat $INIT_STATUS_FILE`

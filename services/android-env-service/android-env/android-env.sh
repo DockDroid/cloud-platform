@@ -123,12 +123,12 @@ function check_session_status()
 	do
 		ps -h $SESSIONMANAGERPID > /dev/null
 		if [[ $? -gt 0 ]]; then
-			if [[ $TIMEOUT -gt 10 ]]; then
+			if [[ $TIMEOUT -gt 100 ]]; then
 				error "FAILED to start the Session Manager"
 			else
 				TIMEOUT=$(($TIMEOUT+1))
 			fi
-			sleep 1
+			sleep 0.1
 		else
 			break
 		fi
@@ -144,10 +144,10 @@ function check_session_status()
 			[[ -S $ANDROID_SOCKET_DIR/$ANDROID_NAME/input/event2 ]]; then
 			break
 		else
-			if [[ $TIMEOUT -gt 20 ]]; then
+			if [[ $TIMEOUT -gt 100 ]]; then
 				error "FAILED: Timed out waiting for sockets"
 			else
-				sleep 1
+				sleep 0.1
 				TIMEOUT=$(($TIMEOUT+1))
 			fi
 		fi
